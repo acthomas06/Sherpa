@@ -13,10 +13,12 @@ module.exports = function(config) {
     files: [
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
+      'app/bower_components/jquery/jquery.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
-      'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      //'test/mock/**/*.js',
+      'test/spec/**/*.js',
+      'app/bower_components/angular-ui-router/release/angular-ui-router.js'
     ],
 
     // list of files / patterns to exclude
@@ -31,7 +33,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // Start these browsers, currently available:
@@ -47,6 +49,25 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: false,
+
+    //add preprocessors
+    preprocessors: {
+      'app/views/**/*.html': 'html2js',
+      'app/scripts/*.js' : 'coverage',
+      'app/scripts/**/*.js' : 'coverage'
+    },
+
+    reporters: ['coverage', 'progress'],
+
+    // coverageReporter: {
+    //   type: 'html',
+    //   dir: 'coverage',
+    //   file: 'javascript.xml'
+    // },
+    // add html2js preprocessors
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/' // strip app from the file path
+    }
   });
 };

@@ -12,9 +12,10 @@ describe('Directive: dvColor', function () {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<dv-color></dv-color>');
+  it('should change the color of an element', inject(function ($compile) {
+    element = angular.element('<div dv-color="blue">some text</div>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the dvColor directive');
+    scope.$digest();
+    expect(element.css('color')).toBe('blue');
   }));
 });

@@ -12,11 +12,12 @@ describe('Controller: MainCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+      $scope: scope,
+      teams: [{name: 'fakies'}, {name: 'also fake'}]
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should attach a list of teams to the scope', function () {
+    expect(scope.teams.length).toBe(2);
   });
 });
