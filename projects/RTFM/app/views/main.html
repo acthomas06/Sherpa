@@ -1,0 +1,27 @@
+<div ng-controller="ThreadCtrl">
+  <div class="header">
+    RTFM
+  </div>
+  <div>
+    Enter a thread title: 
+    <!-- Add a thread title-->
+    <input ng-model="newTitle" ng-keydown="addThread($event)"/>
+    <br>
+    <br>
+    Enter thread text:
+    <input ng-model="newThread" ng-keydown="addThread($event)"/>
+    <br>
+    <br>
+  </div>
+  <div class="threads">
+    <div id="newThreads" ng-repeat="(id, thread) in threads">
+      <div class="title">
+        {{thread.title}}
+      </div>
+      <div class="newThread">
+        {{thread.body}}
+      </div>
+      <input class="threadBtn" type="button" value="Reply" />
+    </div>
+  </div>
+</div>
